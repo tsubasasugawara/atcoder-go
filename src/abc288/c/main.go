@@ -10,17 +10,17 @@ type UnionFind struct {
 	par []int
 }
 
-func (u UnionFind) newUnionFind(N int) *UnionFind {
+func newUnionFind(N int) *UnionFind {
 	u := new(UnionFind)
 	u.par = make([]int, N)
 	for i := range u.par {
-		u.par[i] = -1
+		u.par[i] = i
 	}
 	return u
 }
 
 func (u UnionFind) root(x int) int {
-	if u.par[x] < 0 {
+	if u.par[x] == x {
 		return x
 	}
 
@@ -35,19 +35,11 @@ func (u UnionFind) unite(x, y int) {
 		return
 	}
 
-	u.par[yr] += u.par[xr]
 	u.par[xr] = u.par[yr]
 }
 
 func (u UnionFind) same(x, y int) bool {
-	if u.root(x) == u.root(y) {
-		return true
-	}
-	return false
-}
-
-func (u UnionFind) size(x int) int {
-	return -u.par[u.root(x)]
+	return u.root(x) == u.root(y)
 }
 
 func main() {
@@ -58,13 +50,13 @@ func main() {
 	var n, m int
 	fmt.Fscan(in, &n, &m)
 
-	uni := newUnionFind(n)
+	uni := newUnionFind(n + 1)
 
-	var a, b int
 	cnt := 0
 	for i := 0; i < m; i++ {
+		var a, b int
 		fmt.Fscan(in, &a, &b)
-		if uni.root(a) == uni.root(b) {
+		if uni.same(a, b) {
 			cnt += 1
 		}
 		uni.unite(a, b)

@@ -1,0 +1,13 @@
+*
+!*/
+
+!Makefile
+!Dockerfile
+!README.md
+!.gitignore
+!*.go
+!*.json
+!*.in
+!*.out
+!.bashrc
+!.vimrc

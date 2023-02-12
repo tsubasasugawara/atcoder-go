@@ -12,12 +12,23 @@ func abs(a int) int {
 }
 
 // 累乗
-func pow(a, b int) int {
-	res := 1
-	for i := 0; i < b; i++ {
-		res *= a
+func pow(x, n int) int {
+	if n == 0 {
+		return 1
 	}
-	return res
+
+	k := 1
+	for n > 1 {
+		if n%2 != 0 {
+			k = k * x
+			x = x * x
+			n = (n - 1) / 2
+		} else {
+			x = x * x
+			n = n / 2
+		}
+	}
+	return k * x
 }
 
 // 最大値

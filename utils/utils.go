@@ -1,6 +1,52 @@
 package template
 
-import ()
+var MAX_INT_INF int = 1<<63 - 1
+var MIN_INT_INF int = -1<<63
+
+// 絶対値
+func abs(a int) int {
+	if a < 0 {
+		return -1 * a
+	}
+	return a
+}
+
+// 累乗
+func pow(a, b int) int {
+	res := 1
+	for i := 0; i < b; i++ {
+		res *= a
+	}
+	return res
+}
+
+// 最大値
+func max(nums ...int) int {
+	if len(num) == 0 {
+		panic("funciton max() requires at least one argument.")
+	}
+	res := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if res < nums[i] {
+			res = nums[i]
+		}
+	}
+	return res
+}
+
+// 最小値
+func min(nums ...int) int {
+	if len(num) == 0 {
+		panic("funciton max() requires at least one argument.")
+	}
+	res := nums[0]
+	for i := 1; i < len(nums); i++ {
+		if res > nums[i] {
+			res = nums[i]
+		}
+	}
+	return res
+}
 
 //  最大公約数
 func gcd(a, b int) int {

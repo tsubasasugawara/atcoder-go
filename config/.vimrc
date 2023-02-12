@@ -25,6 +25,7 @@ set cursorline
 set mouse=a
 set ambiwidth=double
 set history=1000
+set clipboard=unnamedplus
 
 let NERDTreeShowHidden = 1
 

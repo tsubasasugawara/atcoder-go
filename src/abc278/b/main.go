@@ -11,16 +11,6 @@ func main() {
 	out := bufio.NewWriter(os.Stdout)
 	defer out.Flush()
 
-	var s string
-	fmt.Fscan(in, &s)
-
-	ans := 0
-	for _, v := range s {
-		if v == 'v' {
-			ans += 1
-		} else {
-			ans += 2
-		}
-	}
-	fmt.Fprintln(out, ans)
+	var h, m int
+	fmt.Fscan(in, &h, &m)
 }
